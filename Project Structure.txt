@@ -1,0 +1,71 @@
+Project Structure
+
+vectormind-rag/
+│
+├── 2b_rag_basics_metadata.py       # Main RAG pipeline — query and answer
+├── db/
+│   └── chroma_db_with_metadata/    # Persistent ChromaDB vector store
+├── .env                            # Your API keys (never commit this)
+├── .env.example                    # Template showing required variables
+├── requirements.txt                # All Python dependencies
+└── README.md                       # Project documentation
+
+Prerequisites
+Python 3.10 or above
+A Google AI Studio API Key — get one free at https://aistudio.google.com/app/apikey
+
+Installation
+Clone the repository
+
+git clone https://github.com/your-username/vectormind-rag.git
+cd vectormind-rag
+
+Create and activate a virtual environment
+
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS or Linux
+source venv/bin/activate
+
+Install all dependencies
+
+pip install -r requirements.txt
+
+Create your .env file and add your API key
+
+GOOGLE_API_KEY=your_google_api_key_here
+
+Run the RAG pipeline
+python 2b_rag_basics_metadata.py
+
+Sample Output
+--- Relevant Documents ---
+Document 1:
+...the castle is situated on the top of a steep cliff overlooking the valley...
+
+Source: documents/dracula.txt
+
+Document 2:
+...in the heart of Transylvania, among the Carpathian mountains...
+
+Source: documents/dracula.txt
+
+--- Generated Response ---
+Content only:
+Based on the provided documents, Dracula's castle is located in Transylvania,
+among the Carpathian mountains in Eastern Europe, situated on a steep cliff
+overlooking the surrounding valley.
+
+Retrieval Configuration
+You can tune the retriever settings inside the script to control how documents are fetched.
+
+retriever = db.as_retriever(
+    search_type="similarity_score_threshold",
+    search_kwargs={
+        "k": 3,                  # How many document chunks to retrieve
+        "score_threshold": 0.2,  # Minimum similarity score to accept
+    },
+)

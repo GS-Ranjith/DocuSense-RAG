@@ -1,0 +1,20 @@
+Environment Variables
+
+What I Learned Building This
+
+This project gave me hands-on experience with the complete RAG pipeline — from converting raw documents into vector embeddings, to storing them in a persistent vector database, to retrieving semantically relevant chunks at query time, to constructing structured prompts for an LLM, and finally generating grounded answers with source attribution.
+I also learned the importance of score thresholding in production RAG systems. Without a minimum similarity threshold, the retriever can return completely unrelated documents which causes the LLM to generate inaccurate or hallucinated answers. Setting a proper threshold is one of the most important tuning decisions in any RAG pipeline.
+
+Future Improvements
+
+Add a Streamlit web interface for interactive Q&A
+Support PDF and Word document ingestion
+Add conversation memory for multi-turn dialogue
+Implement re-ranking of retrieved documents for better precision
+Expose the pipeline as a FastAPI REST endpoint
+Add RAG evaluation metrics like faithfulness and answer relevancy scores
+
+License
+This project is open source and available under the MIT License.
+
+Built as part of my journey to become an AI Systems Engineer — learning by building real projects.
